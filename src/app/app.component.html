@@ -1,0 +1,71 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="title">
+        Задачи
+      </div>
+      <div class="tasks">
+        <ul>
+          <li class="task" *ngFor="let task of tasks" (click)="readTask(task)">
+           {{task.title}}
+            <span class="float-right" (click)="tasksToInWork(task)">☛</span>
+            <span class="float-right" (click)="deleteTask(task)">✖</span>
+          </li>
+        </ul>
+      </div>
+      <div class="add-task">
+        <form>
+          <div class="form-group">
+            <div class="form-group">
+              <input type="text" name="titleTask" class="form-control" [(ngModel)]="titleTask">
+            </div>
+            <textarea name="descriptionTask" class="form-control" [(ngModel)]="descriptionTask"></textarea>
+          </div>
+          <div>
+            <button class="btn btn-primary" (click)="addTask(titleTask, descriptionTask)">Добавить</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="title">
+         В работе
+      </div>
+      <div class="in-work">
+        <ul>
+          <li class="task" *ngFor="let task of inWork" (click)="readTask(task)">
+            {{task.title}}
+            <span class="float-right" (click)="tasksToPerformed(task)">☛</span>
+            <span class="float-right" (click)="inWorkToTasks(task)">☚</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="title">
+        Выполнено
+      </div>
+      <div class="performed">
+        <ul>
+          <li class="task" *ngFor="let task of performed" (click)="readTask(task)">
+            {{task.title}}
+            <span class="float-right" (click)="performedToInWork(task)">☚</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="row mt30">
+    <div class="col-md-12">
+      <div>
+        <h5>{{title}}</h5>
+      </div>
+      <div>
+        <p class="taj">
+          {{description}}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
